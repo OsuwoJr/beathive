@@ -20,6 +20,12 @@ const dashboardRoutes = require('./routes/dashboard');
 const activityRoutes = require('./routes/activity');
 const paymentRoutes = require('./routes/payments');
 
+// New hackathon-winning routes
+const daoRoutes = require('./routes/dao');
+const nodeRoutes = require('./routes/nodes');
+const copyrightRoutes = require('./routes/copyright');
+const troublersRoutes = require('./routes/troublers');
+
 const app = express();
 
 // Security middleware
@@ -62,6 +68,12 @@ app.use('/api/ai', aiRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/activity', activityRoutes);
 app.use('/api/payments', paymentRoutes);
+
+// New hackathon-winning routes
+app.use('/api/dao', daoRoutes);
+app.use('/api/nodes', nodeRoutes);
+app.use('/api/copyright', copyrightRoutes);
+app.use('/api/troublers', troublersRoutes);
 
 // 404 handler
 app.use('*', (req, res) => {

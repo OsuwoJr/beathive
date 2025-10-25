@@ -3,10 +3,10 @@ import { motion } from 'framer-motion'
 import { 
   TrendingUp, DollarSign, Play, Users, Music2, 
   Calendar, ArrowUp, ArrowDown, Download, ExternalLink,
-  Wallet, Award, Activity
+  Wallet, Award, Activity, Vote, MapPin, Shield, Users as UsersIcon
 } from 'lucide-react'
 import useStore from '../store/useStore'
-import { recentActivity } from '../data/mockData'
+import { recentActivity, dashboardStats, hackathonFeatures } from '../data/mockData'
 
 export default function DashboardPage() {
   const { user } = useStore()
@@ -29,7 +29,7 @@ export default function DashboardPage() {
   const stats = [
     {
       label: 'Total Earnings',
-      value: '$2,345.67',
+      value: dashboardStats.totalEarnings,
       change: '+12.5%',
       trend: 'up',
       icon: DollarSign,
@@ -38,7 +38,7 @@ export default function DashboardPage() {
     },
     {
       label: 'Total Streams',
-      value: '45,678',
+      value: dashboardStats.totalStreams.toLocaleString(),
       change: '+8.2%',
       trend: 'up',
       icon: Play,
@@ -47,7 +47,7 @@ export default function DashboardPage() {
     },
     {
       label: 'Followers',
-      value: '3,890',
+      value: dashboardStats.followers.toLocaleString(),
       change: '+15.3%',
       trend: 'up',
       icon: Users,
@@ -56,7 +56,7 @@ export default function DashboardPage() {
     },
     {
       label: 'Active Collabs',
-      value: '12',
+      value: dashboardStats.activeCollabs,
       change: '+2',
       trend: 'up',
       icon: Music2,
@@ -65,15 +65,7 @@ export default function DashboardPage() {
     }
   ]
 
-  const earnings = [
-    { month: 'Jan', amount: 245 },
-    { month: 'Feb', amount: 312 },
-    { month: 'Mar', amount: 289 },
-    { month: 'Apr', amount: 398 },
-    { month: 'May', amount: 445 },
-    { month: 'Jun', amount: 523 },
-    { month: 'Jul', amount: 612 }
-  ]
+  const earnings = dashboardStats.earningsHistory
 
   const maxEarning = Math.max(...earnings.map(e => e.amount))
 
@@ -243,6 +235,53 @@ export default function DashboardPage() {
           </div>
         </div>
 
+        {/* Hackathon Features Showcase */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="mt-8 card p-6"
+        >
+          <div className="flex items-center space-x-3 mb-6">
+            <Award className="w-6 h-6 text-primary-600" />
+            <h2 className="text-2xl font-bold">🏆 Hackathon Features</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-4 rounded-xl">
+              <div className="flex items-center space-x-2 mb-2">
+                <Vote className="w-5 h-5 text-purple-600" />
+                <span className="font-semibold text-purple-800">DAO Governance</span>
+              </div>
+              <p className="text-sm text-purple-600">Community voting & proposals</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-4 rounded-xl">
+              <div className="flex items-center space-x-2 mb-2">
+                <MapPin className="w-5 h-5 text-blue-600" />
+                <span className="font-semibold text-blue-800">Street Nodes</span>
+              </div>
+              <p className="text-sm text-blue-600">DePIN IoT recording hubs</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl">
+              <div className="flex items-center space-x-2 mb-2">
+                <Shield className="w-5 h-5 text-green-600" />
+                <span className="font-semibold text-green-800">AI Guardian</span>
+              </div>
+              <p className="text-sm text-green-600">Copyright protection</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-orange-50 to-amber-50 p-4 rounded-xl">
+              <div className="flex items-center space-x-2 mb-2">
+                <UsersIcon className="w-5 h-5 text-orange-600" />
+                <span className="font-semibold text-orange-800">Troublers</span>
+              </div>
+              <p className="text-sm text-orange-600">Street talent verification</p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Recent Activity */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -262,12 +301,17 @@ export default function DashboardPage() {
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center ${
                     activity.type === 'earning' || activity.type === 'stream' 
                       ? 'bg-green-100 text-green-600'
+                      : activity.type === 'vote'
+                      ? 'bg-purple-100 text-purple-600'
+                      : activity.type === 'node'
+                      ? 'bg-blue-100 text-blue-600'
+                      : activity.type === 'copyright'
+                      ? 'bg-red-100 text-red-600'
+                      : activity.type === 'troublers'
+                      ? 'bg-orange-100 text-orange-600'
                       : 'bg-blue-100 text-blue-600'
                   }`}>
-                    {activity.type === 'stream' && <Play className="w-5 h-5" />}
-                    {activity.type === 'earning' && <DollarSign className="w-5 h-5" />}
-                    {activity.type === 'collab' && <Music2 className="w-5 h-5" />}
-                    {activity.type === 'follower' && <Users className="w-5 h-5" />}
+                    <span className="text-lg">{activity.icon}</span>
                   </div>
                   
                   <div>

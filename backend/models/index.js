@@ -17,6 +17,14 @@ db.Activity = require('./Activity')(sequelize);
 db.Follower = require('./Follower')(sequelize);
 db.Transaction = require('./Transaction')(sequelize);
 
+// New hackathon-winning models
+db.DAOProposal = require('./DAOProposal')(sequelize);
+db.DAOVote = require('./DAOVote')(sequelize);
+db.GovernanceToken = require('./GovernanceToken')(sequelize);
+db.StreetNode = require('./StreetNode')(sequelize);
+db.CopyrightScan = require('./CopyrightScan')(sequelize);
+db.TroublersArtist = require('./TroublersArtist')(sequelize);
+
 // Define associations
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {

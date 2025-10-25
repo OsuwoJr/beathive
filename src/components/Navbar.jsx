@@ -1,5 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { Music, Search, Upload, LayoutDashboard, Wallet } from 'lucide-react'
+import { Music, Search, Upload, LayoutDashboard, Wallet, Vote, MapPin, Shield, Users } from 'lucide-react'
 import useStore from '../store/useStore'
 
 export default function Navbar() {
@@ -46,6 +46,26 @@ export default function Navbar() {
                 <Link to="/dashboard" className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors">
                   <LayoutDashboard className="w-5 h-5" />
                   <span className="font-medium">Dashboard</span>
+                </Link>
+                
+                <Link to="/governance" className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors">
+                  <Vote className="w-5 h-5" />
+                  <span className="font-medium">DAO</span>
+                </Link>
+                
+                <Link to="/street-nodes" className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors">
+                  <MapPin className="w-5 h-5" />
+                  <span className="font-medium">Nodes</span>
+                </Link>
+                
+                <Link to="/copyright" className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors">
+                  <Shield className="w-5 h-5" />
+                  <span className="font-medium">Protection</span>
+                </Link>
+                
+                <Link to="/troublers" className="flex items-center space-x-2 text-gray-700 hover:text-primary-600 transition-colors">
+                  <Users className="w-5 h-5" />
+                  <span className="font-medium">Troublers</span>
                 </Link>
               </>
             )}

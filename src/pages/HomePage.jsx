@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { 
   Music, Sparkles, TrendingUp, Shield, Users, Zap, 
-  Globe, Award, ArrowRight, Play 
+  Globe, Award, ArrowRight, Play, Vote, MapPin, 
+  Brain, Star, CheckCircle
 } from 'lucide-react'
+import { hackathonFeatures } from '../data/mockData'
 
 export default function HomePage() {
   return (
@@ -145,6 +147,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      
 
       {/* How It Works */}
       <section className="py-20 bg-gray-50">
