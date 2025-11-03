@@ -1,6 +1,9 @@
 # 🎵 BeatHive.Africa - Powering Africa's Creators with AI + Hedera
 
 A decentralized, AI-powered ecosystem where African street musicians, dancers, and creators earn fairly, collaborate transparently, and own their digital identity.
+##LINKS
+#PITC DECK: https://www.canva.com/design/DAG2tGwjYTQ/kqwaI7LvAOJAVubKyDO7Lg/edit?utm_content=DAG2tGwjYTQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+#HEDERA CERTIFICATION LINK : https://certs.hashgraphdev.com/9a7a9c44-79c7-4664-b3af-29c8e029d345.pdf
 
 ## 🌟 Features
 
