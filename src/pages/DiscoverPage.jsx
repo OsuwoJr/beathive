@@ -60,7 +60,7 @@ export default function DiscoverPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {aiRecommendations.map((rec) => {
-              const artist = mockArtists.find(a => a.id === rec.artistId)
+              const artist = rec.artist
               return (
                 <motion.div
                   key={rec.id}
